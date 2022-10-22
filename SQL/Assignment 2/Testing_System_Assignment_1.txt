@@ -1,0 +1,31 @@
+DROP DATABASE IF EXISTS Testing_System_Assignment_1;
+CREATE DATABASE Testing_System_Assignment_1;
+ use Testing_System_Assignment_1;
+ 
+ DROP TABLE IF EXISTS   Department;
+ -- Tạo bảng 1:Department
+CREATE TABLE Department (
+	DepartmentID INT PRIMARY KEY AUTO_INCREMENT ,--  DepartmentID: định danh của phòng ban (auto increment)
+    DepartmentName  VARCHAR(50)-- DepartmentName: tên đầy đủ của phòng ban (VD: sale, marketing, BOD)
+);
+
+DROP TABLE IF EXISTS  Position;
+-- Tạo bảng Table 2: Position
+CREATE TABLE Position  (
+	PositionID  INT PRIMARY KEY AUTO_INCREMENT , -- : định danh của chức vụ (auto increment)
+	PositionName ENUM ('Dev', 'Test', 'Scrum Master', 'PM')			--  : tên chức vụ (Dev, Test, Scrum Master, PM)
+	);
+
+DROP TABLE IF EXISTS  Account;
+--  Table 3: Account
+CREATE TABLE Account (
+	AccountID  INT PRIMARY KEY AUTO_INCREMENT ,--  AccountID: định danh của User (auto increment)
+	Email VARCHAR(50), --  Email:
+	Username VARCHAR(50), --  Username:
+	FullName VARCHAR(50),--  FullName:
+	DepartmentID INT, --  DepartmentID: phòng ban của user trong hệ thống
+    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID),
+	PositionID INT,--  PositionID: chức vụ của User
+    FOREIGN KEY (PositionID) REFERENCES Position (PositionID),
+	CreateDate DATE --  CreateDate: ngày tạo tài khoản
+	);

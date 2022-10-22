@@ -1,0 +1,15 @@
+DROP DATABASE IF EXISTS Homework;
+CREATE DATABASE Homework;
+USE Homework;
+DROP TABLE IF EXISTS Trainee;
+CREATE TABLE Trainee (
+trainee_id INT PRIMARY KEY AUTO_INCREMENT,
+fullname VARCHAR(50),
+birth_date DATE,
+gender ENUM('male','female','unkwown'),
+et_iq INT CHECK (et_iq >=0 AND et_iq <= 20),
+et_gmath INT CHECK ( et_gmath >= 0 AND et_gmath <= 20),
+et_english INT CHECK ( et_english >= 0 AND et_english <= 50),
+training_class CHAR(8),
+evaluation_notes VARCHAR(4000)
+);
